@@ -2,10 +2,14 @@
 
 <div align="center">
   <img src="https://i.imgur.com/WfGUuSy.png" width="96" height="96" />
-  <h1 align="center">RitoClient</h1>
+  <h3 align="center"><strike>RiotClient</strike></h3>
+  <h1 align="center">👊 RitoClient 👌</h1>
   <p align="center">
     🤿 Deep dive into your <strong>RiotClient</strong>
   </p>
+  <a href="https://github.com/PenguLoader/PenguLoader">
+    <img src="https://img.shields.io/github/stars/nomi-san/RitoClient.svg?style=for-the-badge&logo=github" />
+  </a>
 </div>
 
 <br>
@@ -38,3 +42,13 @@
 - <kbd>Ctrl + Shift + I</kbd> to open DevTools
 - <kbd>Ctrl + Shift + R</kbd> to reload the client
 
+## Runtime API
+
+### `DataStore`
+
+Store your data locally like `localStorage`.
+
+- `DataStore.get(key, fallback?)` - get value by key
+- `DataStore.set(key, value)` - set value by key
+- `DataStore.has(key)` - does the key exist?
+- `DataStore.remove(key)` - remove the given key
