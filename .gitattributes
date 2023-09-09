@@ -1,2 +1,6 @@
-bin/* linguist-vendored
-include/*  linguist-vendored
+# Set the default behavior, in case people don't have core.autocrlf set.
+# See https://help.github.com/en/articles/dealing-with-line-endings
+* text=auto
+
+bin/*       linguist-vendored
+include/*   linguist-vendored
