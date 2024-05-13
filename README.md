@@ -17,7 +17,7 @@
 
 <br>
 
-## 🔨 BUILDING
+## 🔨 Building
 
 ### Prerequisites
 
@@ -63,7 +63,7 @@ admin$ mklink "path\to\RiotClientElectron\dwrite.dll" "path\to\RitoClient.dll"
 For testing the latest .NET SDK and Native AOT. Some code in this repo come from [PenguLoader](https://github.com/PenguLoader/PenguLoader) but C# version.
 
 #### Why no more IFEO?
-The new RiotClient Electron uses single executable for both browser process and renderer process, so the IFEO debugger will not work.
+The new RiotClient Electron uses single executable for both browser process and renderer process, so the IFEO debugger will not work due to chrome_elf.
 
 #### Why remote DevTools?
 The new method is to enable remote debugger inside the Electron app, however the app has disabled built-in DevTools. Cannot create a BrowserWindow, so the remote DevTools should be opened in your web browser.
