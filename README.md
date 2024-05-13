@@ -29,7 +29,7 @@ The current RiotClient is 32-bit app, so you need the latest preview .NET 9.0 SD
 ```
 git clone https://github.com/nomi-san/RitoClient.git
 cd RitoClient
-dotnet publish -r win-x86
+dotnet publish -c Release -r win-x86 -o bin\
 ```
 
 ## 🌟 Getting started
@@ -46,16 +46,22 @@ bin/
 1. Create a symlink named `dwrite.dll` in your **RiotClientElectron** folder that points to the output `RitoClient.dll`.
 
 ```
-admin$ mklink "path\to\RiotClientElectron\dwrite.dll" "path\to\RitoClient.dll"
+admin$ mklink "path\to\Riot Client\RiotClientElectron\dwrite.dll" "bin\RitoClient.dll"
 ```
 
-2. Put your **JavaScript** files in `preload` folder that relative to `RitoClient.dll`.
+2. Put your **JavaScript** files in `preload` folder
+
+```js
+console.info('%c RitoClient ', 'background: #eb0029; color: #fff', 'Hi Im Gosu :)')
+```
 
 3. Launch your **RiotClient** and enjoy!
 
 ### Key bindings
 - <kbd>Ctrl + Shift + R</kbd> to reload the client
 - <kbd>Ctrl + Shift + I</kbd> to open the **remote DevTools**
+
+![image](https://github.com/nomi-san/RitoClient/assets/38210249/8d1adc0e-9a52-4b06-93e0-660aa84ab9a5)
 
 ## 🤔 FAQs
 
