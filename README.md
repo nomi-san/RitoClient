@@ -17,7 +17,53 @@
 
 <br>
 
-## 🚧 UNDER CONSTURCTION
+## 🔨 BUILDING
 
-The branch [legacy](https://github.com/nomi-san/RitoClient/edit/legacy) was designed for CEF based RiotClient.
-And now the Electron version will be supported soon.
+### Prerequisites
+
+The current RiotClient is 32-bit app, so you need the latest preview .NET 9.0 SDK that supports x86.
+  - https://aka.ms/dotnet/9.0/daily/dotnet-sdk-win-x64.exe
+
+### Build steps
+
+```
+git clone https://github.com/nomi-san/RitoClient.git
+cd RitoClient
+dotnet publish -r win-x86
+```
+
+## 🌟 Getting started
+
+### Installation
+
+```
+bin/
+  |__ RitoClient.dll
+  |__ preload/
+     |__ hello.js
+```
+
+1. Create a symlink named `dwrite.dll` in your **RiotClientElectron** folder that points to the output `RitoClient.dll`.
+
+```
+admin$ mklink "path\to\RiotClientElectron\dwrite.dll" "path\to\RitoClient.dll"
+```
+
+2. Put your **JavaScript** files in `preload` folder that relative to `RitoClient.dll`.
+
+3. Launch your **RiotClient** and enjoy!
+
+### Key bindings
+- <kbd>Ctrl + Shift + R</kbd> to reload the client
+- <kbd>Ctrl + Shift + I</kbd> to open the **remote DevTools**
+
+## 🤔 FAQs
+
+#### Why C# AOT?
+For testing the latest .NET SDK and Native AOT. Some code in this repo come from [PenguLoader](https://github.com/PenguLoader/PenguLoader) but C# version.
+
+#### Why no more IFEO?
+The new RiotClient Electron uses single executable for both browser process and renderer process, so the IFEO debugger will not work.
+
+#### Why remote DevTools?
+The new method is to enable remote debugger inside the Electron app, however the app has disabled built-in DevTools. Cannot create a BrowserWindow, so the remote DevTools should be opened in your web browser.
