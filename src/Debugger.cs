@@ -62,7 +62,7 @@ namespace RitoClient
 
         public void OpenRemoteDevTools()
         {
-            Utils.OpenUrl($"http://localhost:{Port}{FrontEndUrl}");
+            Utils.OpenUrlAsBrowserApp($"http://localhost:{Port}{FrontEndUrl}");
         }
     }
 }
