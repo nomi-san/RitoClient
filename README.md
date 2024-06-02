@@ -24,6 +24,18 @@
 The current RiotClient is 32-bit app, so you need the latest preview .NET 9.0 SDK that supports x86.
   - https://aka.ms/dotnet/9.0/daily/dotnet-sdk-win-x64.exe
 
+Note that the using SDK in this project is `9.0.0-preview.5.24262.1`, if you get different SDK version, please change it in the `.csproj` project file.
+
+```xml
+   ...
+   <ItemGroup>
+     <PackageReference
+       Include="Microsoft.DotNet.ILCompiler; runtime.win-x64.Microsoft.DotNet.ILCompiler"
+       Version="9.0.0-preview.5.24262.1"
+     />
+     ...
+```
+
 ### Build steps
 
 ```
