@@ -62,7 +62,9 @@ bin/
 For testing the latest .NET SDK and Native AOT. Some code in this repo come from [PenguLoader](https://github.com/PenguLoader/PenguLoader) but C# version.
 
 #### Why no more IFEO?
-The new RiotClient Electron uses single executable for both browser process and renderer process, so the IFEO debugger will not work due to chrome_elf.
+~~The new RiotClient Electron uses single executable for both browser process and renderer process, so the IFEO debugger will not work due to chrome_elf.~~
+
+IFEO mode is back! [#90c4f72](https://github.com/nomi-san/RitoClient/commit/90c4f7269dcd8771242583eb3dab12b93bf718ba)
 
 #### Why remote DevTools?
 The new method is to enable remote debugger inside the Electron app, however the app has disabled built-in DevTools. Cannot create a BrowserWindow, so the remote DevTools should be opened in your web browser.
