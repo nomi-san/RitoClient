@@ -41,6 +41,11 @@ namespace RitoClient
             GetCommandLineW.Install("kernel32.dll",
                 nameof(GetCommandLineW), Hooked_GetCommandLineW);
 
+            if (Rundll32.IsRundll32)
+            {
+                Rundll32.LoadHooks();
+            }
+
             Task.Run(async () =>
             {
                 Debugger = new Debugger(DebuggingPort);
@@ -79,9 +84,13 @@ namespace RitoClient
             if (reason == 1)
             {
                 Native.DisableThreadLibraryCalls(hinst);
+
+                var process = Process.GetCurrentProcess();
+                var exe = process.MainModule!.ModuleName;
                 var args = Environment.CommandLine;
 
-                if (args.Contains("--app-port=")
+                if (exe.Equals("Riot Client.exe", StringComparison.OrdinalIgnoreCase)
+                    && args.Contains("--app-port=")
                     && args.Contains("--remoting-auth-token="))
                 {
                     Initialize();

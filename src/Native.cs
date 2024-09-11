@@ -47,6 +47,56 @@ namespace RitoClient
         [DllImport("kernel32.dll")]
         public static extern int DisableThreadLibraryCalls(IntPtr hmodule);
 
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+        public struct STARTUPINFO
+        {
+            public int cb;
+            public string lpReserved;
+            public string lpDesktop;
+            public string lpTitle;
+            public int dwX;
+            public int dwY;
+            public int dwXSize;
+            public int dwYSize;
+            public int dwXCountChars;
+            public int dwYCountChars;
+            public int dwFillAttribute;
+            public int dwFlags;
+            public ushort wShowWindow;
+            public ushort cbReserved2;
+            public IntPtr lpReserved2;
+            public IntPtr hStdInput;
+            public IntPtr hStdOutput;
+            public IntPtr hStdError;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct PROCESS_INFORMATION
+        {
+            public IntPtr hProcess;
+            public IntPtr hThread;
+            public int dwProcessId;
+            public int dwThreadId;
+        }
+
+        [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool CreateProcessW(string? lpApplicationName, string lpCommandLine,
+            IntPtr lpProcessAttributes, IntPtr lpThreadAttributes,
+            [MarshalAs(UnmanagedType.Bool)] bool bInheritHandles,
+            uint dwCreationFlags, IntPtr lpEnvironment, string? lpCurrentDirectory,
+            [In] ref STARTUPINFO lpStartupInfo, out PROCESS_INFORMATION lpProcessInformation);
+
+        [DllImport("kernel32.dll")]
+        public static extern uint ResumeThread(IntPtr handle);
+
+        [DllImport("kernel32.dll")]
+        public static extern uint WaitForSingleObject(IntPtr handle, uint timeout);
+
+        [DllImport("kernel32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool CloseHandle(IntPtr handle);
+
         /* ntdll.dll */
 
         [DllImport("ntdll.dll")]
