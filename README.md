@@ -3,9 +3,9 @@
 <div align="center">
   <img src="https://i.imgur.com/WfGUuSy.png" width="96" height="96" />
   <h3 align="center"><strike>RiotClient</strike></h3>
-  <h1 align="center">RitoClient Electron</h1>
+  <h1 align="center">RitoClient</h1>
   <p align="center">
-    🤿 Deep dive into your <strong>RiotClient</strong>
+    🤿 Deep dive into your RiotClient UX
   </p>
   <a href="https://github.com/nomi-san/RitoClient">
     <img src="https://img.shields.io/github/stars/nomi-san/RitoClient.svg?style=for-the-badge&logo=github" />
@@ -21,53 +21,34 @@
 
 ### Prerequisites
 
-The current RiotClient is 32-bit app, so you need the latest preview .NET 9.0 SDK that supports x86.
-  - https://aka.ms/dotnet/9.0/daily/dotnet-sdk-win-x64.exe
-
-Note that the using SDK in this project is `9.0.0-preview.5.24262.1`, if you get different SDK version, please change it in the `.csproj` project file.
-
-```xml
-   ...
-   <ItemGroup>
-     <PackageReference
-       Include="Microsoft.DotNet.ILCompiler; runtime.win-x64.Microsoft.DotNet.ILCompiler"
-       Version="9.0.0-preview.5.24262.1"
-     />
-     ...
-```
+- .NET 8.0 SDK
+- Windows SDK 10.0
 
 ### Build steps
 
+- Clone the repo
+- Open terminal in repo and run
+
 ```
-git clone https://github.com/nomi-san/RitoClient.git
-cd RitoClient
-dotnet publish -c Release -r win-x86 -o bin\
+dotnet publish -c Release -o bin\
 ```
 
 ## 🌟 Getting started
 
 ### Installation
 
+1. Run `bin/install.bat` (as admin) to activate the core module
+2. Put your **JavaScript** files in `bin/preload` folder
+
 ```
 bin/
   |__ RitoClient.dll
   |__ preload/
      |__ hello.js
+     |__ ... .js
 ```
 
-1. Create a symlink named `dwrite.dll` in your **RiotClientElectron** folder that points to the output `RitoClient.dll`.
-
-```
-admin$ mklink "path\to\Riot Client\RiotClientElectron\dwrite.dll" "bin\RitoClient.dll"
-```
-
-2. Put your **JavaScript** files in `preload` folder
-
-```js
-console.info('%c RitoClient ', 'background: #eb0029; color: #fff', 'Hi Im Gosu :)')
-```
-
-3. Launch your **RiotClient** and enjoy!
+3. Launch your **Riot Client** and enjoy!
 
 ### Key bindings
 - <kbd>Ctrl + Shift + R</kbd> to reload the client
