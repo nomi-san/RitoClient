@@ -4,24 +4,19 @@ using System.Runtime.InteropServices;
 namespace RitoClient
 {
     // from PenguCore but C# version
+    // ref: https://github.com/PenguLoader/PenguLoader/blob/dev/core/src/hook.h
     internal class Hook<T> : IDisposable where T : Delegate
     {
         IntPtr func_;
         IntPtr code_;
         object lock_;
 
-#if X64
         const int SHELLCODE_SIZE = 12;
-#else
-        const int SHELLCODE_SIZE = 7;
-#endif
 
         [StructLayout(LayoutKind.Sequential, Size = SHELLCODE_SIZE, Pack = 1)]
         unsafe struct Shellcode
         {
-#if X64
             public byte movabs = 0x48;
-#endif
             public byte mov_eax = 0xB8;
             public IntPtr addr;
             public byte push_eax = 0x50;

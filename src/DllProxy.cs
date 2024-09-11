@@ -14,7 +14,7 @@ namespace RitoClient
 
         static DllProxy()
         {
-            var sysDir = Environment.GetFolderPath(Environment.SpecialFolder.SystemX86);
+            var sysDir = Environment.GetFolderPath(Environment.SpecialFolder.System);
             var dwritePath = Path.Combine(sysDir, "dwrite.dll");
 
             var lib = Native.LoadLibraryA(dwritePath);
