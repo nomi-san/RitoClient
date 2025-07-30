@@ -64,7 +64,7 @@ namespace RitoClient
                 var path = (string)(Registry.GetValue("HKEY_LOCAL_MACHINE" + appKey, "", null)
                     ?? Registry.GetValue("HKEY_CURRENT_USER" + appKey, "", null));
 
-                if (File.Exists(path))
+                if (path != null && File.Exists(path))
                     return path;
             }
 
