@@ -7,8 +7,11 @@ namespace RitoClient
     {
         public static IntPtr Owner { get; set; }
 
-        public static void Show(string message)
+        public static void Show(string message, bool warning = false)
         {
+            int flags = 0x0;
+            if (warning) flags |= 0x30;
+
             MsgBox(Owner, message, "RitoClient", 0);
         }
 
