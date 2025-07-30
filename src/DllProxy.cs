@@ -3,16 +3,16 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace RitoClient
+namespace RitoClient.DllProxy
 {
-    internal static class DllProxy
+    internal static class DwriteDll
     {
         [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-        delegate int DWriteCreateFactoryFn(int factoryType, IntPtr iid, IntPtr factory);
+        delegate int DWriteCreateFactoryFn(int factoryType, nint iid, nint factory);
 
-        static DWriteCreateFactoryFn _DWriteCreateFactory;
+        static DWriteCreateFactoryFn _pDWriteCreateFactory;
 
-        static DllProxy()
+        static DwriteDll()
         {
             var sysDir = Environment.GetFolderPath(Environment.SpecialFolder.System);
             var dwritePath = Path.Combine(sysDir, "dwrite.dll");
@@ -20,13 +20,13 @@ namespace RitoClient
             var lib = Native.LoadLibraryA(dwritePath);
             var proc = Native.GetProcAddress(lib, nameof(DWriteCreateFactory));
 
-            _DWriteCreateFactory = Marshal.GetDelegateForFunctionPointer<DWriteCreateFactoryFn>(proc);
+            _pDWriteCreateFactory = Marshal.GetDelegateForFunctionPointer<DWriteCreateFactoryFn>(proc);
         }
 
         [UnmanagedCallersOnly(CallConvs = [typeof(CallConvStdcall)], EntryPoint = nameof(DWriteCreateFactory))]
         static int DWriteCreateFactory(int factoryType, nint iid, nint factory)
         {
-            return _DWriteCreateFactory(factoryType, iid, factory);
+            return _pDWriteCreateFactory(factoryType, iid, factory);
         }
     }
 }
