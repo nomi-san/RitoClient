@@ -1,18 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-    <RootNamespace>RitoClient</RootNamespace>
-    <Nullable>enable</Nullable>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-    <PublishAot>true</PublishAot>
-    <PublishReadyToRun>true</PublishReadyToRun>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<RootNamespace>RitoClient</RootNamespace>
+		<Nullable>enable</Nullable>
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+		
+		<IsAotCompatible>true</IsAotCompatible>
+		<PublishAot>true</PublishAot>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <!--<PackageReference Include="Microsoft.DotNet.ILCompiler; runtime.win-x64.Microsoft.DotNet.ILCompiler" Version="9.0.0-preview.5.24262.1" />-->
-    <PackageReference Include="Websocket.Client" Version="5.1.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Websocket.Client" Version="5.3.0" />
+	</ItemGroup>
 
 </Project>

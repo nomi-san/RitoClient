@@ -21,7 +21,7 @@
 
 ### Prerequisites
 
-- .NET 8.0 SDK
+- .NET 9.0 SDK
 - Windows SDK 10.0
 
 ### Build steps
