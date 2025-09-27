@@ -92,7 +92,7 @@ namespace RitoClient
 
             // create process with suspended & debug flags
             // when debugging, IFEO is not called recursively
-            var success = Native.CreateProcessW(null, commandLine, IntPtr.Zero, IntPtr.Zero,
+            var success = Native.CreateProcess(null, commandLine, IntPtr.Zero, IntPtr.Zero,
                 false, 0x4 | 0x2, IntPtr.Zero, null, ref si, out var pi);
 
             if (success)

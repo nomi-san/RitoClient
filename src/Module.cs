@@ -34,10 +34,10 @@ namespace RitoClient
                 if (module == IntPtr.Zero)
                     return string.Empty;
 
-                var sb = new StringBuilder(2048);
-                Native.GetModuleFileName(module, sb, sb.Capacity);
+                Span<char> buf = stackalloc char[2048];
+                int length = Native.GetModuleFileName(module, buf, buf.Length);
 
-                var fi = new FileInfo(sb.ToString());
+                var fi = new FileInfo(new string(buf.Slice(0, length)));
                 return fi.LinkTarget ?? fi.FullName;
             }
         }

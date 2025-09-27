@@ -17,7 +17,7 @@ namespace RitoClient.DllProxy
             var sysDir = Environment.GetFolderPath(Environment.SpecialFolder.System);
             var dwritePath = Path.Combine(sysDir, "dwrite.dll");
 
-            var lib = Native.LoadLibraryA(dwritePath);
+            var lib = Native.LoadLibrary(dwritePath);
             var proc = Native.GetProcAddress(lib, nameof(DWriteCreateFactory));
 
             _pDWriteCreateFactory = Marshal.GetDelegateForFunctionPointer<DWriteCreateFactoryFn>(proc);
