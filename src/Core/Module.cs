@@ -1,8 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Text;
-
-#pragma warning disable CS8500
+﻿#pragma warning disable CS8500
 
 namespace RitoClient
 {
@@ -12,6 +8,9 @@ namespace RitoClient
         {
             get
             {
+#if DEBUG
+                return Native.GetModuleHandle(nameof(RitoClient) + ".dll");
+#endif
                 unsafe
                 {
                     // magic here
@@ -41,5 +40,7 @@ namespace RitoClient
                 return fi.LinkTarget ?? fi.FullName;
             }
         }
+
+        public static string ThisModuleDir => Path.GetDirectoryName(ThisModulePath) ?? string.Empty;
     }
 }
