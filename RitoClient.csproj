@@ -3,6 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>net9.0-windows</TargetFramework>
 		<RootNamespace>RitoClient</RootNamespace>
+		<Version>0.4.1</Version>
 
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
